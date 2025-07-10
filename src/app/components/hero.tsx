@@ -27,7 +27,7 @@ const Hero = () => {
             <div className="w-full md:w-1/2 space-y-8 text-center md:text-left">
               <AnimatedItem>
                 <div className="leading-tight tracking-tight">
-                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-foreground mb-2">
+                  <h1 className="text-3xl md:text-3xl lg:text-6xl font-extrabold text-foreground mb-2">
                     Transformar tu forma de{' '}
                     <span className="text-primary">estudiar.</span>
                   </h1>
