@@ -69,7 +69,7 @@ const Hero = () => {
             <AnimatedImageContainer className="relative w-full md:w-1/2 h-[400px] md:h-[500px] lg:h-[600px] mt-12 md:mt-0">
               <FloatingElement className="w-full h-full">
                 <Image
-                  src="/images/platonsito.svg"
+                  src="/images/Platonsito.svg"
                   alt="Platón - Aprendizaje filosófico interactivo"
                   fill
                   className="object-contain filter drop-shadow-lg"
