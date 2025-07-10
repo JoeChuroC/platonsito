@@ -1,29 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
 
 interface Props {
-  baseKey?: string; // ej: 'hero' → busca 'hero.typing.sequence1', etc.
-  sequences?: string[]; // también se puede pasar manualmente
+  sequences: string[]; // ahora es obligatorio
   className?: string;
 }
 
-export const TypeEffect = ({ baseKey, sequences, className }: Props) => {
-  const locale = useLocale();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const t = baseKey ? useTranslations(baseKey) : null;
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const resolvedSequences = sequences ?? (baseKey && t
-    ? [
-        t('typing.sequence1'),
-        t('typing.sequence2'),
-        t('typing.sequence3'),
-        t('typing.sequence4'),
-      ]
-    : []);
-
+export const TypeEffect = ({ sequences, className }: Props) => {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [sequenceIndex, setSequenceIndex] = useState(0);
@@ -38,11 +22,10 @@ export const TypeEffect = ({ baseKey, sequences, className }: Props) => {
     return () => {
       if (typingTimeout.current) clearTimeout(typingTimeout.current);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale, baseKey, JSON.stringify(sequences)]); // asegurar re-render si cambian las sequences
+  }, [JSON.stringify(sequences)]); // reinicia si cambian las secuencias
 
   useEffect(() => {
-    const currentPhrase = resolvedSequences[sequenceIndex] ?? '';
+    const currentPhrase = sequences[sequenceIndex] ?? '';
 
     const handleTyping = () => {
       if (isDeleting) {
@@ -50,7 +33,7 @@ export const TypeEffect = ({ baseKey, sequences, className }: Props) => {
         setTypingSpeed(50);
         if (text === '') {
           setIsDeleting(false);
-          setSequenceIndex((prev) => (prev + 1) % resolvedSequences.length);
+          setSequenceIndex((prev) => (prev + 1) % sequences.length);
           setTypingSpeed(200);
         }
       } else {
@@ -67,7 +50,7 @@ export const TypeEffect = ({ baseKey, sequences, className }: Props) => {
     return () => {
       if (typingTimeout.current) clearTimeout(typingTimeout.current);
     };
-  }, [text, isDeleting, sequenceIndex, resolvedSequences, typingSpeed]);
+  }, [text, isDeleting, sequenceIndex, sequences, typingSpeed]);
 
   return (
     <span className={`inline-block mt-2 whitespace-nowrap ${className ?? ''}`}>
