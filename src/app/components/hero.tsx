@@ -1,6 +1,5 @@
 'use client';
 
-
 import Image from 'next/image';
 import { AnimatedImageContainer } from './ui/animations/AnimatedImageContainer';
 import { AnimatedItem } from './ui/animations/AnimatedItem';
@@ -16,21 +15,21 @@ const Hero = () => {
   return (
     <ContainerPage>
       <div
-        className="hero-section -mt-1 md:-mt-1 bg-primary text-quaternary transition-colors duration-300"
+        className="hero-section -mt-1 md:-mt-1 bg-background text-foreground transition-colors duration-300"
         id="hero"
       >
         <AnimatedSection className="relative w-full min-h-screen flex items-center overflow-hidden">
           {/* Fondo decorativo */}
-          <FloatingCircle className="absolute right-10 top-1/3 w-64 h-64 rounded-full border-8 border-[var(--accent-warning)] opacity-30 z-0" />
+          <FloatingCircle className="absolute right-10 top-1/3 w-64 h-64 rounded-full border-8 border-chart-1 opacity-30 z-0" />
 
           <div className="container mx-auto px-6 z-10 flex flex-col md:flex-row items-center justify-between">
             {/* Texto */}
             <div className="w-full md:w-1/2 space-y-8 text-center md:text-left">
               <AnimatedItem>
                 <div className="leading-tight tracking-tight">
-                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-primary mb-2">
+                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-foreground mb-2">
                     Transformar tu forma de{' '}
-                    <span className="text-[var(--interactive-bg)]">estudiar.</span>
+                    <span className="text-primary">estudiar.</span>
                   </h1>
                   <TypeEffect
                     sequences={[
@@ -39,26 +38,26 @@ const Hero = () => {
                       'Estudia de forma efectiva.',
                       'Estudia con PLATÓN.',
                     ]}
-                    className="typing-effect md:text-xl font-semibold text-[var(--interactive-bg)]"
+                    className="typing-effect md:text-xl font-semibold text-primary"
                   />
                 </div>
               </AnimatedItem>
 
               <AnimatedItem delay={0.2}>
-                <p className="text-base md:text-lg text-quaternary max-w-md mx-auto md:mx-0 font-medium leading-relaxed">
+                <p className="text-base md:text-lg text-muted-foreground max-w-md mx-auto md:mx-0 font-medium leading-relaxed">
                   Estudiar no debería ser complicado. Convierte cualquier documento en un camino claro hacia el aprendizaje.
                 </p>
               </AnimatedItem>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
                 <AnimatedItem delay={0.3}>
-                  <button className="btn-primary text-base md:text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                  <button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg text-base md:text-lg shadow-md hover:shadow-lg transition-all duration-300 font-medium">
                     ¿Listo para estudiar?
                   </button>
                 </AnimatedItem>
 
                 <AnimatedItem delay={0.4}>
-                  <button className="btn-secondary text-base md:text-lg shadow-sm hover:shadow-md transition-all duration-300">
+                  <button className="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-6 py-3 rounded-lg text-base md:text-lg shadow-sm hover:shadow-md transition-all duration-300 font-medium">
                     Explorar recursos
                   </button>
                 </AnimatedItem>
@@ -76,12 +75,12 @@ const Hero = () => {
                   priority
                 />
               </FloatingElement>
-              <PulsatingCircle className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full bg-[var(--gray-200)] dark:bg-[var(--gray-800)] opacity-20 -z-10" />
+              <PulsatingCircle className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full bg-muted opacity-20 -z-10" />
             </AnimatedImageContainer>
           </div>
 
           {/* Indicador de scroll */}
-          <ScrollIndicator className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-muted">
+          <ScrollIndicator className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-muted-foreground">
             <span className="text-sm md:text-base font-medium mb-4 transition-colors duration-300">
               Descubre más
             </span>
